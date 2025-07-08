@@ -6,22 +6,78 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
-
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header class="header"> 
-        <a href="" class="logo">Celebrity War</a>
-        <label for="" class="icons">
-    <i class='bxr  bx-menu-wider'  ></i> 
+        <a href="" class="logo">Celebrity Wars</a>
+        <input type="checkbox" id="check">
+        <label for="check" class="icons">
+        <i class='bxr  bx-menu-wider' id="menu-icon" ></i> 
+        <i class='bxr  bx-x' id="close-icon" ></i> 
+
+    
         </label>
         <nav class="navbar">
         
-                <a href="#" class="nav-link">Home</a>
-                <a href="#" class="nav-link">About</a>
-                <a href="#" class="nav-link">Services</a>
-                <a href="#" class="nav-link">Contact</a>
+                <a href="#" style="--i:0;">Home</a>
+                <a href="#" style="--i:1;">About</a>
+                <a href="#" style="--i:2;">Services</a>
+                <a href="#" style="--i:3;">Contact</a>
 
         </nav>
+
     </header>
+    <div class="game-body">
+     <div class="game-container">
+        <h1>Who's Richer?</h1>
+
+        <div class="score-board">
+            <div class="score">Score: <span id="score">0</span></div>
+            <div class="lives">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div class="card left-card" id="card-left">
+                <img src="" alt="Celebrity 1" class="celebrity-img">
+                <h2 class="celebrity-name"></h2>
+                <p class="celebrity-profession"></p>
+                <div class="net-worth hidden">
+                    Net Worth: <span class="worth-value"></span>
+                </div>
+            </div>
+
+            <div class="vs-text">VS</div>
+
+            <div class="card right-card" id="card-right">
+                <img src="" alt="Celebrity 2" class="celebrity-img">
+                <h2 class="celebrity-name"></h2>
+                <p class="celebrity-profession"></p>
+                <div class="net-worth hidden">
+                    Net Worth: <span class="worth-value"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <div class="game-over-screen" id="gameOverScreen">
+            <h2>Game Over!</h2>
+            <p>Your Final Score: <span id="finalScore">0</span></p>
+            <button id="restartGame" class="btn">Play Again</button>
+        </div>
+    </div>
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="celeb.js"></script>
 </body>
 </html>

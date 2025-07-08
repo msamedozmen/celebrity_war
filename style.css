@@ -11,6 +11,10 @@ body {
   min-height: 100vh;
   background-size: cover;
   background-position: center;
+  background-image: url(b11.png) ;
+   align-items: center;
+  justify-content: center;
+    /* overflow: hidden; */
 }
 
 .header {
@@ -18,19 +22,36 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.3rem 10%;
-  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1.7rem 10%;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-    backdrop-filter: blur(50px);
+    /* backdrop-filter: blur(50px);
+  background-color: rgba(0, 0, 0, 0.1); */
+
+
 }
 
+#check {
+  display: none;
+}
+.header::before{
+
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50px);
+    z-index: -1;
+}
 .logo {
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #fff;
   text-decoration: none;
 
@@ -54,6 +75,275 @@ body {
 }   
 
 
+.game-body {
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    overflow: hidden;
+    margin-top: 150px;
+}
+
+
+.game-container {
+    background-color: rgba(232, 152, 138, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(233, 227, 227, 0.2);
+    padding: 30px;
+    text-align: center;
+    max-width: 900px;
+    width: 95%;
+    box-sizing: border-box;
+    position: relative;
+    color: #fff;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+h1 {
+    color:#2A1458;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+.score-board {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+    background-color: #FFEAD8;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.score {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #8de08a;
+}
+
+.lives .fas {
+    color: #cf0505;
+    font-size: 1.6em;
+    margin: 0 3px;
+    transition: transform 0.2s ease-out;
+}
+
+.lives .fas.lost {
+    color: #e0c1c1;
+}
+
+.game-area {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    margin-bottom: 30px;
+    perspective: 1000px; 
+}
+.card {
+    background-color: #be5ba9;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    padding: 20px;
+    width: 45%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* flex: 1; */
+    min-height: 350px;
+    transition: transform 0.7s ease-out, opacity 0.7s ease-out, box-shadow 0.3s ease;
+    transform-style: preserve-3d; 
+    position: relative;
+    overflow: hidden;
+    cursor: pointer; 
+}
+.card:not(.disabled):hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.card.disabled {
+    pointer-events: none; /* Prevents clicking when disabled */
+    opacity: 0.8; /* Slightly dim disabled cards */
+}
+
+.card.entering {
+    opacity: 0;
+    transform: translateY(50px) rotateX(-20deg);
+}
+
+.card.active {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+
+.celebrity-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 4px solid #f5ba86;
+    box-shadow: 0 0 15px rgba(238, 220, 171, 0.5);
+    transition: transform 0.3s ease;
+      flex-shrink: 0;
+
+}   
+
+.celebrity-img:hover {
+    transform: scale(1.05);
+}
+
+.celebrity-name {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+    color: #2A1458;
+    font-weight: 600;
+    
+}
+
+.celebrity-profession {
+    font-size: 1.1em;
+    color: #FFEAD8;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.net-worth {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: #4CAF50;
+    margin-top: 10px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.net-worth.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.net-worth.correct {
+    color: #28a745;
+}
+
+.net-worth.incorrect {
+    color: #dc3545;
+}
+
+.vs-text {
+    font-size: 2.5em;
+    font-weight: 700;
+    color: #2A1458;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    text-shadow: 2px 2px 5px rgba(197, 34, 197, 0.774);
+}
+
+.feedback {
+    margin-top: 25px;
+    font-size: 1.4em;
+    font-weight: 600;
+    min-height: 30px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.feedback.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.feedback.correct {
+    color: #28a745;
+}
+
+.feedback.incorrect {
+    color: #dc3545;
+}
+
+.game-over-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(216, 155, 145, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.game-over-screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.game-over-screen h2 {
+    color: #dc3545;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.game-over-screen p {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.game-over-screen #finalScore {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #007bff;
+}
+
+.btn {
+    background-color: #9B177E;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3);
+}
+
+.btn:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+}
+
+
 @media (max-width: 992px) {
     .header {
         padding: 1.3rem 5%;
@@ -62,12 +352,189 @@ body {
 
 @media (max-width: 768px) {
  .icons {    
-    display: block;
-}     
+    display: inline-flex;
+    }     
+   .icons #close-icon {
+    display: none;
+   }
+.navbar {
+    position:absolute;
+    top:100%;
+    left:0;
+    height: 0;
+
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: .3s ease ;
+    overflow: hidden;
 }
+#check:checked~.navbar{
+  height: 17.7rem;
+}
+
+.navbar a {
+    display: block;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+        transition: .3s ease ;
+        opacity: 0;
+
+}
+#check:checked~.navbar a{
+    transform: translateY(0);
+        opacity: 1;
+
+    transition-delay:calc(.15s * var(--i)) ;
+}
+
+#check:checked~.icons #menu-icon{
+  display: none;
+}
+
+#check:checked~.icons #close-icon{
+  display: block;
+}
+    .game-area {
+        align-items: center;
+        gap: 0px;
+        display: flex;
+    }
+
+    .card {
+        width: 50%;
+        min-height: 120px;
+    }
+
+    .vs-text {
+      margin-right: 10px;
+      margin-left: 10px;
+      font-size: 2em;
+    }
+    .celebrity-img {
+
+    }
+
+    /* No more specific button styles needed here as they are removed */
+    /* .buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn {
+        width: 80%;
+    } */
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .score, .lives {
+        font-size: 1.2em;
+    }
+    .lives .fas {
+        font-size: 1.4em;
+    }
+
+    .game-over-screen h2 {
+        font-size: 2.5em;
+    }
+
+    .game-over-screen p {
+        font-size: 1.5em;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .game-body {
+      margin-top: 120px;
+    }
+    .game-container {
+        padding: 10pxpx;
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .celebrity-img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .celebrity-name {
+        font-size: .7em;
+    }
+
+    .celebrity-profession {
+        font-size: .7em;
+    }
+
+    .net-worth {
+        font-size: .7em;
+    }
+
+    .btn { /* Still applies to the restart button */
+        padding: 10px 20px;
+        font-size: 0.7em;
+    }
+
+    /* .header {
+      height:;
+    } */
+    .icons {    
+    display: inline-flex;
+    }     
+   .icons #close-icon {
+    display: none;
+   }
 
 .navbar {
     position:absolute;
-    top:0
+    top:100%;
+    left:0;
+    height: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(50px);
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+    transition: .3s ease ;
 }
-                
+#check:checked~.navbar{
+  height: 10.7rem;
+}
+
+.navbar a {
+    display: block;
+    font-size: 1.1rem;
+    margin: .5rem 0;
+    text-align: center;
+    transform: translateY(-50px);
+    transition: .3s ease ;
+    opacity: 0;
+
+    /* padding-bottom: 15px; */
+    /* overflow: scroll; */
+
+
+}
+#check:checked~.navbar a{
+    transform: translateY(0);
+        opacity: 1;
+
+    transition-delay:calc(.15s * var(--i)) ;
+}
+
+#check:checked~.icons #menu-icon{
+  display: none;
+}
+
+#check:checked~.icons #close-icon{
+  display: block;
+}
+}
+

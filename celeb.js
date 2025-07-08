@@ -251,8 +251,8 @@ function revealNetWorth(isCorrectGuess, playerChoice) {
 // Handle user guess
 function launchConfetti() {
     confetti({
-        particleCount: 120,
-        spread: 80,
+        particleCount: 500,
+        spread: 150,
         origin: { y: 0.6 },
         colors: [
             '#6a0dad',  
